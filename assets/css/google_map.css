@@ -1,0 +1,14 @@
+html, body { height: 100% !important; margin: 0; }
+.gm-style div.info_win { display: none; width: 200px; height: 110px; background: #fff; 
+	-moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; -khtml-border-radius: 3px; border: 3px solid #ccc; 
+	padding: 10px;  position: absolute; z-index: 99999; overflow: hidden; 
+	box-shadow: 0 0 15px rgba(0, 0, 0, 1);
+	color: #333; font-size: 1em;
+	}
+
+.info_win h3 { color: #0e1b49; font-size: 1.5em; }
+.info_win address { color: #333; font-size: 1em; }
+.info_win .btn { text-align: center; display: block; width: 100px; margin: 10px auto;   }
+.marker_tooltip { color: #333; border: 1px #999 solid; background-color: #fff; padding:3px 8px; font-size: 1em; white-space: nowrap; box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+
+}

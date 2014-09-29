@@ -1,0 +1,2 @@
+DROP TABLE IF EXISTS `locations`;
+DROP TABLE IF EXISTS `zip_codes`;
