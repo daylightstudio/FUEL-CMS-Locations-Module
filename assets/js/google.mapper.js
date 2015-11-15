@@ -77,6 +77,21 @@ GoogleMapper.prototype = {
 	
 	setOptions : function(o){
 		this.options = jQuery.extend(true, this.options, o);
+
+		var latlngStrings = ['mapCenter', 'defaultMapCenter'];
+
+		for (var n in latlngStrings){
+			var opt = latlngStrings[n];
+			
+			// parse out mapCenter if it's a string
+			if (typeof(this.options[opt]) == 'string'){
+				var latlng = this.options[opt].split(',');
+				if (latlng.length == 2){
+					this.options[opt] = {lat: latlng[0], lng: latlng[1]}
+				}
+			}
+		}
+		
 	},
 
 	createMap : function(points, options){
@@ -105,7 +120,8 @@ GoogleMapper.prototype = {
 			overviewMapControlOptions: {
 			    opened: true
 			  },
-			styles: [ {"featureType": "poi", "stylers": [{"visibility": "simplified"} ] }, {"featureType": "road", "stylers": [{"visibility": "simplified"} ] }, {"featureType": "water", "stylers": [{"visibility": "simplified"} ] }, {"featureType": "transit", "stylers": [{"visibility": "simplified"} ] }, {"featureType": "landscape", "stylers": [{"visibility": "simplified"} ] }, {"featureType": "road.highway", "stylers": [{"visibility": "off"} ] }, {"featureType": "road.local", "stylers": [{"visibility": "on"} ] }, {"featureType": "road.highway", "elementType": "geometry", "stylers": [{"visibility": "on"} ] }, {"featureType": "water", "stylers": [{"color": "#84afa3"}, {"lightness": 52 } ] }, {"stylers": [{"saturation": -77 } ] }, {"featureType": "road"} ]
+			//styles: [ {"featureType": "poi", "stylers": [{"visibility": "simplified"} ] }, {"featureType": "road", "stylers": [{"visibility": "simplified"} ] }, {"featureType": "water", "stylers": [{"visibility": "simplified"} ] }, {"featureType": "transit", "stylers": [{"visibility": "simplified"} ] }, {"featureType": "landscape", "stylers": [{"visibility": "simplified"} ] }, {"featureType": "road.highway", "stylers": [{"visibility": "off"} ] }, {"featureType": "road.local", "stylers": [{"visibility": "on"} ] }, {"featureType": "road.highway", "elementType": "geometry", "stylers": [{"visibility": "on"} ] }, {"featureType": "water", "stylers": [{"color": "#84afa3"}, {"lightness": 52 } ] }, {"stylers": [{"saturation": -77 } ] }, {"featureType": "road"} ]
+			styles: [ ]
 			};
 			
 		//mapOptions.center = results[0].geometry.location;
@@ -237,7 +253,7 @@ GoogleMapper.prototype = {
 	createMarkerCustom : function(location, type){
 		var config = this.options.marker;
 		var image = null;
-		if (config.img.length){
+		if (typeof(config.img) != 'undefined'){
 			var img = (type) ? config.img + '_' + type + '.png' : config.img + '.png';
 			img = this.options.imgPath + img;
 			

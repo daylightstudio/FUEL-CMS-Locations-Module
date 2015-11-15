@@ -40,8 +40,8 @@ CustomOverlay.prototype.draw = function(){
 	var html ='<div">';
 	html += '<h3>' + info.name + '</h3>';
 	html += '<address>' + info.address + '</address>';
-	if (info.phone.length) html += '<div><a href="tel:' + info.phone + '">' + info.phone + '</a></div>';
-	if (info.website.length) html += '<div><a href="' + info.website + '" target="_blank">' + info.website + '</a></div>';
+	if (typeof(info.phone) != 'undefined' && info.phone.length) html += '<div><a href="tel:' + info.phone + '">' + info.phone + '</a></div>';
+	if (typeof(info.website) != 'undefined' && info.website.length) html += '<div><a href="' + info.website + '" target="_blank">' + info.website + '</a></div>';
 	html += '</div>';
 
 	$div.html(html);

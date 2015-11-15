@@ -18,14 +18,20 @@
 <?=js($js)?>
 
 <script type="text/javascript" charset="utf-8">
-//<![CDATA[
+
+var basePath = '<?=site_url();?>';
+
 $(window).load(function(){ 
 	var mapParams = <?=$this->fuel->locations->gmap_params()?>;
+	<?php if (!empty($zoom)) : ?>mapParams.zoom = <?=$zoom?>;<?php endif; ?>
+	<?php if (!empty($type)) : ?>mapParams.mapType = '<?=$type?>';<?php endif; ?>
+	<?php if (!empty($startpoint)) : ?>mapParams.mapCenter = '<?=$startpoint?>';<?php endif; ?>
+
 	var map = new GoogleMapper(mapParams);
 	map.createMap();
 	map.createMarkers(<?php echo $data ?>);
 })	
-//]]>
+
 </script>
 
 </head>

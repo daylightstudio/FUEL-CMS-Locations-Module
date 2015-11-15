@@ -1,19 +1,26 @@
 <h1>Locations Module Documentation</h1>
 <p>This Locations module documentation is for version <?=LOCATIONS_VERSION?>.</p>
 
-<p>This module allows you to create location records that can be plotted on a Google map found out <dfn>locations/map</dfn>.
+<p>The Locations allows you to create location records that can be plotted on a <a href="https://developers.google.com/maps/documentation/javascript/tutorial" target="_blank">Google map</a> found out <dfn>locations/map</dfn>.
 The configuration allows you a lot of flexibility in controlling the map and has all the options commented out in the config. It's recommended that you copy the 
 <span class="file">fuel/modules/locations/config/locations.php</span> to <span class="file">fuel/application/config/locations.php</span> which will allow
-for painless updating going forward.</p>
+for painless updating going forward. Many of the module configuration parameters map directly to the <a href="https://developers.google.com/maps/documentation/javascript/reference#MapOptions" target="_blank">Google map options</a>.</p>
 
+<h2>The Map</h2>
+<p>The map can be found at the URI <dfn>locations/map</dfn>. You can pass the following query string parameters that will overwrite any default configuration settings found at <span class="file">fuel/application/config/locations.php</span>:</p>
+<ul>
+	<li><strong>zoom</strong>: an integer value of how far in to zoom the map. The default is 16.</li>
+	<li><strong>type</strong>: the map type. The default is roadmap.</li>
+</ul>
+<p>It is recommended that you use an iframe in your pages to embed the map with the src value of <dfn>&lt;?=site_url('locations/map')?&gt;</dfn>.</p>
 
 <h2>Categories</h2>
 <p>You can associate categories to your locations. If this is done and you have a custom image marker, you will need to create a new marker for each category using the "marker.img" value as
-the base and the category slug value as the suffix (all markers should be .png). So for example, if you have a "marker.img" value of "mappin" and a category with a slug value of "mycategory" the image name would be
+the base and the category slug value as the suffix (all markers should be .png file types). So for example, if you have a "marker.img" value of "mappin" and a category with a slug value of "mycategory" the image name would be
 "mappin_mycategory.png".</p>
 
 <h3>Custom Map CSS and Javascript</h3>
-<p>The <dfn>locations/map</dfn> is setup to look for a <dfn>$css</dfn> and <dfn>$js</dfn> variable. You can set them in a <a href="http://docs.getfuelcms.com/general/pages-variables">variables</a> file. 
+<p>The <dfn>locations/map</dfn> page is setup to look for a <dfn>$css</dfn> and <dfn>$js</dfn> variable. You can set them in a <a href="http://docs.getfuelcms.com/general/pages-variables">variables</a> file. 
 	For example, if you add the following to your <span class="file">_variables/global.php</span>, it will load in a css file that you can use to override the default values.
 	In addition, the following will load in an additional javascript file, which you can use to override things like the info window.</p>
 

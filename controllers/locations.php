@@ -10,10 +10,12 @@ class Locations extends CI_Controller {
 	{
 		$this->load->model('locations_model');
 
-		$vars['startpoint'] = ( ! $this->input->get('startpoint')) ? 0 : $this->input->get('startpoint', TRUE);
-		$vars['zoom'] = ($this->input->get('zoom')) ? $this->input->get('zoom', TRUE) : 16;
-		$vars['type'] = ($this->input->get('type')) ? $this->input->get('type', TRUE) : 'roadmap';
+		$vars['startpoint'] = ($this->input->get('startpoint')) ? $this->input->get('startpoint', TRUE) : 0;
 
+		$gmap_config = $this->fuel->locations->config('gmap');
+		$vars['zoom'] = ($this->input->get('zoom')) ? $this->input->get('zoom', TRUE) : (!empty($gmap_config['zoom'])) ? $gmap_config['zoom'] : 16;
+		$vars['type'] = ($this->input->get('type')) ? $this->input->get('type', TRUE) : (!empty($gmap_config['mapType'])) ? $gmap_config['mapType'] : 'roadmap';
+		
 		$pagevars = $this->fuel->pagevars->retrieve('locations/map');
 		$vars['js'] = (!empty($pagevars['js'])) ? $pagevars['js'] : '';
 		$vars['css'] = (!empty($pagevars['css'])) ? $pagevars['css'] : '';

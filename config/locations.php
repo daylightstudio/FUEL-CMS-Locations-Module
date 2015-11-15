@@ -30,13 +30,16 @@ $config['locations']['gmap'] = array(
 	'disableDefaultUI' => TRUE,
 	'mapTypeControl'   => FALSE,
 	'marker'           => array('custom' => FALSE),
+
+	// https://snazzymaps.com/ ... must be in array format so that json_encode will work... so this WILL NOT WORK: 
+	// [ {"featureType": "poi", "stylers": [{"visibility": "simplified"} ] }, {"featureType": "road", "stylers": [{"visibility": "simplified"} ] }, {"featureType": "water", "stylers": [{"visibility": "simplified"} ] }, {"featureType": "transit", "stylers": [{"visibility": "simplified"} ] }, {"featureType": "landscape", "stylers": [{"visibility": "simplified"} ] }, {"featureType": "road.highway", "stylers": [{"visibility": "off"} ] }, {"featureType": "road.local", "stylers": [{"visibility": "on"} ] }, {"featureType": "road.highway", "elementType": "geometry", "stylers": [{"visibility": "on"} ] }, {"featureType": "water", "stylers": [{"color": "#84afa3"}, {"lightness": 52 } ] }, {"stylers": [{"saturation": -77 } ] }, {"featureType": "road"} ]
 	'styles'           => array(),
 
 	// example of what can be done with other parameters
 	// 'mapCenter'        => array('lat' => '45.5200', 'lng' => '122.6819'), // PDX
 	// 'defaultMapCenter' =>  array('lat' => '45.5200', 'lng' => '122.6819'), // If no data exists, this will be used
 	// 'overview'         => false,
-	// 'mapType'         => 'roadmap',
+	// 'mapType'         => 'roadmap', // hybrid : 'HYBRID', roadmap: 'ROADMAP', satellite: 'SATELLITE', terrain: 'TERRAIN'
 	// 'topZIndex: 100000',
 	// 'panToXOffset' => 0,
 	// 'panToYOffset' => 0,

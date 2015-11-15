@@ -46,7 +46,7 @@ class Fuel_locations extends Fuel_advanced_module {
 	 * @param	array	config preferences
 	 * @return	void
 	 */	
-	function initialize($params)
+	function initialize($params = array())
 	{
 		parent::initialize($params);
 		$this->set_params($this->_config);

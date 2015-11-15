@@ -42,7 +42,7 @@ class Locations_model extends Base_module_model {
 	function list_items($limit = NULL, $offset = NULL, $col = 'name', $order = 'asc', $just_count = FALSE)
 	{
 		$this->db->join($this->_tables['fuel_categories'], $this->_tables['fuel_categories'].'.id = locations.category_id','left');
-		$this->db->select('locations.id, locations.name, '.$this->_tables['fuel_categories'].'.name AS category, locations.address, locations.city, locations.state, locations.zip, locations.phone, locations.website,locations.published');
+		$this->db->select('locations.id, locations.name, '.$this->_tables['fuel_categories'].'.name AS category, locations.address, locations.city, locations.state, locations.zip, locations.phone, locations.website, locations.precedence, locations.published');
 		$data = parent::list_items($limit, $offset, $col, $order, $just_count = FALSE);
 		return $data;
 	}
@@ -50,7 +50,7 @@ class Locations_model extends Base_module_model {
 	function find_location($where)
 	{
 		$this->db->select('locations.*, '.$this->_tables['fuel_categories'].'.slug as category, '.$this->_tables['fuel_categories'].'.slug as category_slug');
-		$data = $this->locations_model->find_all_array($where);
+		$data = $this->find_all_array($where);
 		$i = 1;
 		foreach($data as $k => $v)
 		{
@@ -116,6 +116,7 @@ class Locations_model extends Base_module_model {
 
 		// remove if no precedence column is provided
 		$this->db->join($this->_tables['fuel_categories'], 'category_id = '.$this->_tables['fuel_categories'].'.id', 'LEFT');
+		$this->db->order_by('precedence asc');
 	}
 
 }
@@ -140,8 +141,16 @@ class Location_model extends Base_module_record {
 		return prep_url($this->website);
 	}
 
-	function get_map_url()
+	function get_map_url($use_latlng = FALSE)
 	{
-		return site_url('locations/map?id='.$this->id);
+		$url = 'locations/map';
+		if ($use_latlng)
+		{
+			return site_url($url.'?startpoint='.$this->latitude.','.$this->longitude);
+		}
+		else
+		{
+			return site_url($url.'?id='.$this->id);
+		}
 	}
 }
