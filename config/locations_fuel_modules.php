@@ -8,7 +8,8 @@ $config['modules']['locations_points'] = array(
 	'module_uri' => 'locations/points',
 	'module_name' => 'Location Points',
 	'permission' => 'locations_points',
-	'filters' => array('fuel_categories:id' => array('type' => 'select', 'label' => 'Category', 'model' => 'fuel_categories', 'model_params' => array('id', 'name', array('context' => 'locations')), 'first_option' => 'Select a category...'))
+	'filters' => array('fuel_categories:id' => array('type' => 'select', 'label' => 'Category', 'model' => 'fuel_categories', 'model_params' => array('id', 'name', array('context' => 'locations')), 'first_option' => 'Select a category...')),
+	'nav_selected' => 'locations/points|locations/points/:any',
 );
 
 $config['modules']['locations_zip_codes'] = array(
