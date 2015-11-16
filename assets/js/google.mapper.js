@@ -19,14 +19,14 @@ function GoogleMapper(o)
 		displayTooltips: true,
 
 		scrollwheel: true,
-    	navigationControl: true,
-    	mapTypeControl: true,
-    	scaleControl: true,
-    	draggable: true,
- 		disableDefaultUI: false,
- 		zoomControl: true,
+		navigationControl: true,
+		mapTypeControl: true,
+		scaleControl: true,
+		draggable: true,
+		disableDefaultUI: false,
+		zoomControl: true,
 
- 		styles: [],
+		styles: [],
 
 		// marker: {
 		// 	custom: false,
@@ -55,7 +55,7 @@ function GoogleMapper(o)
 	this.infoWindows = [];
 	this.tooltips = [];
 	this.tooltips = [];
- 	this.geocoder = new google.maps.Geocoder();
+	this.geocoder = new google.maps.Geocoder();
 	this.overlaysLoaded = 0;
 	this.numPoints = 0;
 	this.setOptions(o);
@@ -105,11 +105,11 @@ GoogleMapper.prototype = {
 		var mapOptions = { 
 
 			scrollwheel: this.options.scrollwheel,
-    		navigationControl: this.options.navigationControl,
-    		mapTypeControl: this.options.mapTypeControl,
-    		scaleControl: this.options.scaleControl,
-    		draggable: this.options.draggable,
-    		zoomControl: this.options.zoomControl,
+			navigationControl: this.options.navigationControl,
+			mapTypeControl: this.options.mapTypeControl,
+			scaleControl: this.options.scaleControl,
+			draggable: this.options.draggable,
+			zoomControl: this.options.zoomControl,
 
 			zoom: this.options.zoom,
 			center: new google.maps.LatLng(this.options.mapCenter.lat, this.options.mapCenter.lng),
@@ -118,7 +118,7 @@ GoogleMapper.prototype = {
 			scaleControl: true,
 			overviewMapControl: this.options.overview,
 			overviewMapControlOptions: {
-			    opened: true
+				opened: true
 			  },
 			//styles: [ {"featureType": "poi", "stylers": [{"visibility": "simplified"} ] }, {"featureType": "road", "stylers": [{"visibility": "simplified"} ] }, {"featureType": "water", "stylers": [{"visibility": "simplified"} ] }, {"featureType": "transit", "stylers": [{"visibility": "simplified"} ] }, {"featureType": "landscape", "stylers": [{"visibility": "simplified"} ] }, {"featureType": "road.highway", "stylers": [{"visibility": "off"} ] }, {"featureType": "road.local", "stylers": [{"visibility": "on"} ] }, {"featureType": "road.highway", "elementType": "geometry", "stylers": [{"visibility": "on"} ] }, {"featureType": "water", "stylers": [{"color": "#84afa3"}, {"lightness": 52 } ] }, {"stylers": [{"saturation": -77 } ] }, {"featureType": "road"} ]
 			styles: this.options.styles
