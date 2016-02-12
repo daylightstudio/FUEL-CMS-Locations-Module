@@ -110,9 +110,9 @@ class Locations_model extends Base_module_model {
 		return $values;
 	}
 
-	function _common_query()
+	function _common_query($display_unpublished_if_logged_in = NULL)
 	{
-		parent::_common_query();
+		parent::_common_query($display_unpublished_if_logged_in);
 
 		// remove if no precedence column is provided
 		$this->db->join($this->_tables['fuel_categories'], 'category_id = '.$this->_tables['fuel_categories'].'.id', 'LEFT');
