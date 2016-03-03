@@ -129,7 +129,11 @@ class Fuel_locations extends Fuel_advanced_module {
 	function gmap_params()
 	{
 		$params = $this->fuel->locations->config('gmap');
-		return json_encode($params, JSON_PRETTY_PRINT);
+		if (defined('JSON_PRETTY_PRINT'))
+		{
+			return json_encode($params, JSON_PRETTY_PRINT);	
+		}
+		return json_encode($params);
 	}
 	
 }
