@@ -15,7 +15,7 @@ class Locations extends CI_Controller {
 		$gmap_config = $this->fuel->locations->config('gmap');
 		$vars['zoom'] = ($this->input->get('zoom')) ? $this->input->get('zoom', TRUE) : (!empty($gmap_config['zoom'])) ? $gmap_config['zoom'] : 16;
 		$vars['type'] = ($this->input->get('type')) ? $this->input->get('type', TRUE) : (!empty($gmap_config['mapType'])) ? $gmap_config['mapType'] : 'roadmap';
-		
+
 		$pagevars = $this->fuel->pagevars->retrieve('locations/map');
 		$vars['js'] = (!empty($pagevars['js'])) ? $pagevars['js'] : '';
 		$vars['css'] = (!empty($pagevars['css'])) ? $pagevars['css'] : '';
@@ -33,7 +33,7 @@ class Locations extends CI_Controller {
 	function _get_data($return_type = NULL)
 	{
 		$where = array();
-		$valid = array('id', 'zip');
+		$valid = array('id', 'zip', 'radius');
 		foreach($valid as $v)
 		{
 			if ($this->input->get_post($v))

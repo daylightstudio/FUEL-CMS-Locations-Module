@@ -69,12 +69,11 @@ class Fuel_locations extends Fuel_advanced_module {
 			if (!empty($where['zip']))
 			{
 				$this->CI->load->module_model('locations', 'zip_codes_model');
-				$radius = $this->CI->input->get('radius');
-				if (!$radius)
+				if (!empty($where['radius']))
 				{
 					$radius = 5;
 				}
-				$zips = $this->CI->zip_codes_model->get_zips_in_range($this->CI->input->get('zip', TRUE), $radius);
+				$zips = $this->CI->zip_codes_model->get_zips_in_range($where['zip'], $radius);
 
 				$where['zip'] = array();
 				if (!empty($zips))
